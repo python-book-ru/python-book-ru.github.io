@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        if (document.location.search) {
+            url = document.location.search.slice(1, document.location.search.length).split("&")
+            if (url.length == 1 && url[0] == "") {
+                url = ["main"]
+            }
+        } else {
+            url = ["main"]
+        }
+            //addEventListener("keydown", function (event) {console.log(event.keyCode)})
+
+    </script>
+    <script src="PWC.js"></script>
+    <script src="get.js"></script>
+    <link href="all.css" rel="stylesheet">
+</head>
+
+<body>
+    <img id="logo" src="img/logo.svg">
+    <div id="top-menu"></div>
+    <div id="left-menu">
+        <a href="?main">На главную</a>
+        <br>
+        <a href="?libs">Библиотеки</a>
+        <br>
+        <a href="?tutorials">Руководства</a>
+        <br>
+        <!--<a href="?search">-->
+        <s>Поиск</s>
+        <!--</a>-->
+    </div>
+    <div id="page">
+        <div id="last-upd"></div>
+        <script>
+            if (url[0] == "main") {
+                document.write(get("main.html"))
+            } else if (url[0] == "libs") {
+                document.write(get("libs.html"))
+            } else if (url[0] == "tutorials") {
+                document.write(get("tutorials.html"))
+            } else if (url[0] == "d") {
+                var p = get("doc/" + url.slice(1, url.length).join("/") + ".txt")
+                if (p) {
+                    document.write(PWC(p))
+                } else {
+                    document.write(get("404.html"))
+                }
+            } else if (url[0] == "t") {
+                var p = get("tut/" + url.slice(1, url.length).join("/") + ".txt")
+                if (p) {
+                    document.write(PWC(p))
+                } else {
+                    document.write(get("404.html"))
+                }
+            } else {
+                document.write(get("404.html"))
+            }
+        </script>
+    </div>
+</body>
+
+</html>
