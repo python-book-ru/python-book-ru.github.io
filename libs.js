@@ -55,7 +55,6 @@ var link = undefined
 var sub = undefined
 var br = undefined
 for (var lib in libs) {
-    libs[lib] = libs[lib].slice(0, libs[lib].length - 1)
     btn = document.createElement("a")
     eval("map." + libs[lib] + " = function () {searchMap('map-"  + libs[lib] + "', '" + libs[lib] + "')}")
     btn.setAttribute("onclick", "map." + libs[lib] + "()")
