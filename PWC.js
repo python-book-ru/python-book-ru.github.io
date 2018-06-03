@@ -8,7 +8,7 @@ function PWC(wikicode) {
     var out = "";
     for (i in wikicode) {
         if (key === "t") {
-            if (wikicode.substring(i, parseInt(i)+2) === "{{") {
+            if (wikicode.substring(i, parseInt(i) + 2) === "{{") {
                 out = out + text/*.replace(/ /g, "&nbsp;")*/
                 text = "";
                 key = "_";
@@ -18,12 +18,12 @@ function PWC(wikicode) {
                 text = text + wikicode[i];
             }
         } else if (key === "{}") {
-            if (wikicode.substring(i, parseInt(i)+2) === "{{") {
+            if (wikicode.substring(i, parseInt(i) + 2) === "{{") {
                 tmpin.push("");
                 key = "_";
                 timer = 0;
                 next = "{}";
-            } else if (wikicode.substring(i, parseInt(i)+2) === "}}") {
+            } else if (wikicode.substring(i, parseInt(i) + 2) === "}}") {
                 if (tmpin.length === 1) {
                     out = out + tmp(tmpin[0]);
                     tmpin = [""]
@@ -61,34 +61,10 @@ function tmp(wikicode) {
     params.pop()
     params.reverse();
     if (name === "!" || name == "<" || name == ">") {
-        return {"!": "&#124;", "<": "&#123;", ">": "&#125;"}[name]
+        return { "!": "&#124;", "<": "&#123;", ">": "&#125;" }[name]
     } else /*if (name.length === 1)*/ {
         eval("var out = wctmp." + name + "('" + params.join("', '") + "');");
         return out
     }
 }
 
-class wctmp {
-    constructor () {}
-    metaDoc (lastUpd, t, name, using, ) {
-        var lastUpdGui = document.getElementById("last-upd")
-        lastUpdGui.innerHTML = lastUpd
-        return "<table><tr><td width='100%'>" + wctmp.type(t) + " " + name + "</td></tr><tr><td width='100%'>" + using + "</td></tr></table>"
-    }
-
-    code (code) {
-        return "<pre>" + code + "</pre>"
-    }
-
-    type (t) {
-        if (t == "v") {
-            return "■" //"<img src='var.png' class='type'>"
-        } else if (t == "f") {
-            return "⨍" //"<img src='func.png'>"
-        } else if (t == "c") {
-            return "🕮" //"<img src='class.png'>"
-        }
-    }
-}
-
-wctmp = new wctmp()

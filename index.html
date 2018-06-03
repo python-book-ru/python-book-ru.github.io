@@ -15,14 +15,17 @@
             //addEventListener("keydown", function (event) {console.log(event.keyCode)})
 
     </script>
-    <script src="PWC.js"></script>
     <script src="get.js"></script>
+    <script src="PWC.js"></script>
+    <script src="wctmp.js"></script>
     <link href="all.css" rel="stylesheet">
 </head>
 
 <body>
     <img id="logo" src="img/logo.svg">
-    <div id="top-menu"></div>
+    <div id="top-menu">
+        <div id="last-upd">Страница была обновлена </div>
+    </div>
     <div id="left-menu">
         <a href="?main">На главную</a>
         <br>
@@ -35,7 +38,6 @@
         <!--</a>-->
     </div>
     <div id="page">
-        <div id="last-upd"></div>
         <script>
             if (url[0] == "main") {
                 document.write(get("main.html"))

@@ -71,3 +71,9 @@ div#page {
 div#last-upd {
 
 }
+
+div.map-sub {
+    padding-left: 20px;
+    border-left: 1px solid black;
+    margin-left: 7px;
+}
