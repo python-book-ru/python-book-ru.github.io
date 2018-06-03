@@ -68,6 +68,20 @@ div#page {
     border-top-right-radius: 0px;
 }
 
+div#page a {
+    text-decoration: none;
+    color: #4f3bff;
+}
+
+div#page a:hover {
+    text-decoration: none;
+    color: #5c74fd;
+}
+div#page a:active {
+    text-decoration: none;
+    color: #faf735;
+}
+
 div#last-upd {
 
 }
